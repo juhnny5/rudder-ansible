@@ -150,11 +150,7 @@ class RudderSettingsInterface(object):
         current_server_settings = self.get_SettingValue(name)
         data = value
 
-        update = False
-
-        if current_server_settings != self.get_SettingValue(name):
-            update = True
-
+        update = current_server_settings != self.get_SettingValue(name)
         if update:
             self._send_request(
                 url, headers=self.headers, method='POST', data=data
